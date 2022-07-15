@@ -1,0 +1,20 @@
+{
+  "name": "gfgm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gfgm.js",
+  "scripts": {
+    "dev": "nodemon gfgm.js",
+    "start": "node gfgm.js"
+  },
+  "author": "ya",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "*",
+    "body-parser": "*",
+    "express": "*",
+    "pug": "*",
+    "markdown-it":"*",
+    "gray-matter":"*"
+  }
+}
