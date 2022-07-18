@@ -1,0 +1,16 @@
+div.wsp
+ div.left
+  each post, i in posts
+   a.Card(href="/blog/" +post.slug)
+    div.card_image
+      img.card_img(src=post.frontmatter.img)
+    div.cardtoptitle
+      h3 #{post.frontmatter.title}
+    div.cardtopsubtitle
+      | by #{post.frontmatter.author.name} - #{post.frontmatter.author.bio}
+    div.cardsummary
+      p #{post.frontmatter.summary}
+    div.cardtaglist
+     each tag, i in post.frontmatter.tags
+      div.btn
+       | #{tag}

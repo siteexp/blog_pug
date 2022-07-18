@@ -44,18 +44,19 @@ li a:hover {
 }
 
 .Card {
+    text-decoration: none;
+    color: black;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
     display: grid;
-    grid-template-columns: 20% 20% 60%; 
-    grid-template-rows: 50px 20px 40px 100px 40px;
+    grid-template-columns: 20% 80%; 
+    grid-template-rows: 50px 20px 20px 100px;
     gap: 0px 0px;
     grid-template-areas: 
-     "card_image cardtoptitle cardtoptitle"
-     "card_image cardtopsubtitle cardtopsubtitle"
-     "card_image cardheader cardcategory"
-     "card_image cardsummary cardsummary"
-     "card_image cardfooter cardtags"; 
+     "card_image cardtoptitle"
+     "card_image cardtopsubtitle"
+     "card_image cardtaglist"
+     "card_image cardsummary"; 
 
 }
 .card_image {
@@ -75,10 +76,10 @@ li a:hover {
    grid-area: cardsummary;
 }
 
-.cardheader { grid-area: cardheader; }
-.cardcategory { grid-area: cardcategory; }
-.cardfooter { grid-area: cardfooter; }
-.cardtags { grid-area: cardtags;}
+.cardtaglist { 
+   grid-area: cardtaglist;
+//   float: right;
+}
 
 .card_img {
   width: 100%;
@@ -103,3 +104,4 @@ li a:hover {
 .btn:hover {
   border-left: 8px solid black;
 }
+
