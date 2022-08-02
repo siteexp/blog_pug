@@ -1,10 +1,18 @@
+html {
+    height:100%;
+}
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    height:100%;
+    display:-webkit-box;
+    display:-moz-box;
+    display:-ms-flexbox;
+    display:-webkit-flex;
+    display:flex;
+    flex-direction:column
 }
 main {
-    flex: 1;
+    -ms-flex:1 1 auto;
+    flex:1 1 auto
 }
 
 ul {
@@ -50,7 +58,7 @@ li a:hover {
     text-align: center;
     display: grid;
     grid-template-columns: 20% 80%; 
-    grid-template-rows: 50px 20px 20px 100px;
+    grid-template-rows: 45px 20px 20px 80px;
     gap: 0px 0px;
     grid-template-areas: 
      "card_image cardtoptitle"
@@ -105,3 +113,17 @@ li a:hover {
   border-left: 8px solid black;
 }
 
+.copyright {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    float: right;
+}
+
+.company {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+}

@@ -1,7 +1,9 @@
-div.wsp
+extends layout
+block append main
+ div.wsp
  
   div.left
-   each post, i in posts.slice(0, 3)
+   each post, i in posts
     a.Card(href="/blog/" +post.slug)
      div.card_image
        img.card_img(src=post.frontmatter.img)

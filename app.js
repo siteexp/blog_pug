@@ -7,8 +7,21 @@ const fs = require('fs');
 
 const app = express();
 //const md = require("marked");
+var hljs = require('./highlight.min.js'); // https://highlightjs.org/
 
-//ALL Blog posts
+// Actual default values
+var md = require('markdown-it')({
+  highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return hljs.highlight(str, { language: lang }).value;
+      } catch (__) {}
+    }
+
+    return ''; // use external default escaping
+  }
+});
+
 
 
 
@@ -28,23 +41,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get("/blog/:article", (req, res) => {
 
   // read the markdown file
-  const file = matter.read(__dirname + '/blog/' + req.params.article + '.md');
+  //const file = matter.read(__dirname + '/blog/' + req.params.article + '.md');
 
   // use markdown-it to convert content to HTML
-  var md = require("markdown-it")();
-  let content = file.content;
-  var result = md.render(content);
+  //let content = file.content;
+  //var result = md.render(content);
+  const content = fs.readFileSync('./blog/' + req.params.article + '.md', "utf-8");
+  const result = matter(content);
+
   
   res.render("blog", {
     post: result,
-    title: file.data.title,
-    summary: file.data.description,
-    img: file.data.image
+    title: 'test' //file.data.title,
+//    summary: file.data.description,
+//    author: file.data.author,
+//    img: file.data.image
   });
+  console.log(result);
 });
-
-
-
 
 app.get("/", (req, res) => {
   const blogposts = fs.readdirSync(__dirname + '/blog').filter(file => file.endsWith('.md'));
@@ -60,6 +74,24 @@ app.get("/", (req, res) => {
   console.log(posts);
    res.render("index", {
      title: "Home" ,
+     posts: posts
+   });
+
+});
+
+app.get("/news", (req, res) => {
+  const blogposts = fs.readdirSync(__dirname + '/news').filter(file => file.endsWith('.md'));
+  const posts = blogposts.map((fileName) => {
+    const slug = fileName.replace('.md', '');
+    const readFile = fs.readFileSync(`news/${fileName}`, 'utf-8');
+    const { data: frontmatter } = matter(readFile);
+    return {
+      slug,
+      frontmatter,
+    };
+  })
+  res.render("news", {
+     title: "News" ,
      posts: posts
    });
 

@@ -10,11 +10,14 @@
   "author": "ya",
   "license": "MIT",
   "dependencies": {
+    "ad": "^0.3.2",
     "axios": "*",
     "body-parser": "*",
     "express": "*",
-    "pug": "*",
-    "markdown-it":"*",
-    "gray-matter":"*"
+    "gray-matter": "*",
+    "highlight": "^0.2.4",
+    "markdown-it": "*",
+    "nodemailer": "*",
+    "pug": "*"
   }
 }
